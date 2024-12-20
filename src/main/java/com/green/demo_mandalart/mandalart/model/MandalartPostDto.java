@@ -4,6 +4,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @Getter
 @Setter
 @Schema(title = "")
@@ -12,11 +14,12 @@ public class MandalartPostDto {
     private long mandalartId;
     @Schema(description = "실천 목표")
     private String title;
+    @Schema(description = "계획 목표")
     private String contents;
     @Schema(description = "계획 시작일")
-    private String startDate;
+    private LocalDate startDate;
     @Schema(description = "계획 종료일")
-    private String finishDate;
+    private LocalDate finishDate;
     @Schema(name = "completed_fd", description = "완료 여부 0:미완료 , 1:완료")
     private int completedFg;
     @Schema(description = "0:최상위 부모 1:1단계 2:2단계")

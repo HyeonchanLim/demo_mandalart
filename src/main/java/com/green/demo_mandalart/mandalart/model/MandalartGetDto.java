@@ -4,6 +4,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @Getter
 @Schema(title = "만다라트 조회 정보")
 @Setter
@@ -24,11 +26,15 @@ public class MandalartGetDto {
     @Schema(description = "세부 내용")
     private String contents;
     @Schema(name = "created_at" , description = "생성일")
-    private String createdAt;
+    // localdate , date 타입으로 날짜 설정 가능
+    // json 으로 변환해줌
+    // mybatis - java.util.date 에서는 date , timestamp 를 잘 지원함
+    // but java.time 패키지 - localdate , localdatetime 을 사용하려면 별도의 변환 설정이 필요
+    private LocalDate createdAt;
     @Schema(name = "updated_at" , description = "업데이트일")
-    private String updatedAt;
+    private LocalDate updatedAt;
     @Schema(name = "start_date" , description = "계획 시작일")
-    private String startDate;
+    private LocalDate startDate;
     @Schema(name = "finish_date" , description = "계획 종료일")
-    private String finishDate;
+    private LocalDate finishDate;
 }

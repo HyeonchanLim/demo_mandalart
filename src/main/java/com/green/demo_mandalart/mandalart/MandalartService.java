@@ -22,7 +22,8 @@ public class MandalartService {
         if (res == null){
             return res;
         }
-        long userId
+        long userId;
+
 
         return res;
     }
