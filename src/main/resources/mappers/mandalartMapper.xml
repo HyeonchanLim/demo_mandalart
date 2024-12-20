@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.green.demo_mandalart.mandalart.MandalartMapper">
+    <select id="getMand">
+        SELECT *
+        FROM mandalart
+        WHERE project_id = #{projectId}
+        ORDER BY depth , order_id
+    </select>
+    <update id="patchMand">
+        UPDATE mandalart
+        SET mandalart_id = #{mandalartId}
+            , nick_name = #{nickName}
+            , title = #{title}
+            , contents = #{contents}
+            , completed_fg = #{completedFg}
+            , depth = #{depth}
+            , start_date = #{startDate}
+            , finish_date = #{finishDate}
+            , order_id = #{orderId}
+        WHERE project_id = #{projectId}
+    </update>
+</mapper>
