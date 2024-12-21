@@ -4,11 +4,14 @@ package com.green.demo_mandalart.mandalart;
 
 import com.green.demo_mandalart.mandalart.common.model.ResultResponse;
 import com.green.demo_mandalart.mandalart.model.*;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springdoc.core.annotations.ParameterObject;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -32,12 +35,25 @@ public class MandalartController {
         ]
         만다라트 마다 출력
          */
-    public ResultResponse<MandalartGetRes> getMandalart (MandalartGetReq p){
-        MandalartGetRes mandalartGetRes = new MandalartGetRes();
+    @GetMapping
+    @Operation(summary = "만다르트 조회" , description = "프로젝트 id는 만다르트가 현재 속해있는 프로젝트")
+    public ResultResponse<List<MandalartGetRes>> getMandalart (@ParameterObject @ModelAttribute MandalartGetReq p){
+        List<MandalartGetRes> res = service.getMandalart(p);
 
-        return ResultResponse.<MandalartGetRes>builder()
+        return ResultResponse.<List<MandalartGetRes>>builder()
                 .resultMessage("조회완료")
-                .resultData(mandalartGetRes)
+                .resultData(res)
+                .build();
+    }
+
+    @PostMapping
+    @Operation(summary = "만다르트 업데이트")
+    public ResultResponse<List<MandalartPostRes>> patchMand (@ParameterObject @ModelAttribute MandalartPostReq p){
+        List<MandalartPostRes> res = service.patchMand(p);
+
+        return ResultResponse.<List<MandalartPostRes>>builder()
+                .resultMessage("업데이트 완료")
+                .resultData(res)
                 .build();
     }
 }

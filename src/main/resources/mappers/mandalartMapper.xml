@@ -3,22 +3,30 @@
 
 <mapper namespace="com.green.demo_mandalart.mandalart.MandalartMapper">
     <select id="getMand">
-        SELECT *
+        SELECT mandalart_id AS mandalartId
+               , project_id AS projectId
+               , title
+               , contents
+               , completed_fg AS completedFg
+               , depth
+               , order_id AS orderId
+               , start_date AS startDate
+               , finish_date AS finishDate
         FROM mandalart
         WHERE project_id = #{projectId}
         ORDER BY depth , order_id
     </select>
     <update id="patchMand">
         UPDATE mandalart
-        SET mandalart_id = #{mandalartId}
-            , nick_name = #{nickName}
+        SET nick_name = #{nickName}
             , title = #{title}
             , contents = #{contents}
-            , completed_fg = #{completedFg}
             , depth = #{depth}
+            , order_id = #{orderId}
+            , completed_fg = #{completedFg}
             , start_date = #{startDate}
             , finish_date = #{finishDate}
-            , order_id = #{orderId}
         WHERE project_id = #{projectId}
+        AND mandalart_id = #{mandalartId}
     </update>
 </mapper>

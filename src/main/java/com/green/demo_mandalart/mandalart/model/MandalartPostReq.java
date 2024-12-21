@@ -11,8 +11,10 @@ public class MandalartPostReq {
     @Schema(title = "project_id")
     private long projectId;
 
-
-    /*
+    public void setProjectId(long projectId) {
+        this.projectId = projectId;
+    }
+/*
     ex) lv2의 7번 칸 - lv2 7칸 - lv 8칸
     -> depth , order_id 로 따로 작성 xxx
     프론트에서 데이터를 해당 칸에 직접 입력함

@@ -4,12 +4,14 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Schema(title = "만다라트 조회 정보")
 @Setter
 public class MandalartGetRes {
-    @Schema(name = "project_id")
+    @Schema(title = "project_id")
     private long projectId;
-    @Schema(name = "mandalart_id")
-    private long mandalartId;
+    @Schema(description = "만다라트 id 리스트")
+    private List<MandalartGetDto> mandalartIdGetList;
 }

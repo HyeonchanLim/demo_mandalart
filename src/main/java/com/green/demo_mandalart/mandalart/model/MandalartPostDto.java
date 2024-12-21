@@ -12,6 +12,8 @@ import java.time.LocalDate;
 public class MandalartPostDto {
     @Schema(title = "mandalart_id")
     private long mandalartId;
+    @Schema(name = "nick_name" , description = "사용자 닉네임")
+    private String nickName;
     @Schema(description = "실천 목표")
     private String title;
     @Schema(description = "계획 목표")
